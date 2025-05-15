@@ -18,7 +18,7 @@ namespace IdeaManager.UI.Views
     /// <summary>
     /// Logique d'interaction pour IdeaFormView.xaml
     /// </summary>
-    public partial class IdeaFormView : Page
+    public partial class IdeaFormView : UserControl
     {
         public IdeaFormView()
         {

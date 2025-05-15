@@ -7,10 +7,14 @@ namespace IdeaManager.UI
     {
         public static IServiceCollection AddUIServices(this IServiceCollection services)
         {
-            services.AddSingleton<MainWindow>();
-            services.AddTransient<DashboardViewModel>();
+            // Register ViewModels
+            services.AddTransient<MainViewModel>();
+            services.AddTransient<IdeaListViewModel>();
             services.AddTransient<IdeaFormViewModel>();
-            services.AddTransient<ProjectListViewModel>();
+
+            // Register MainWindow
+            services.AddSingleton<MainWindow>();
+
             return services;
         }
     }
