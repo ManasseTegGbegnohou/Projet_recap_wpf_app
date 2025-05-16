@@ -3,28 +3,31 @@ using IdeaManager.Core.Interfaces;
 using IdeaManager.Data.Db;
 using Microsoft.EntityFrameworkCore;
 
-public class IdeaRepository : IRepository<Idea>
+namespace IdeaManager.Data.Repositories
 {
-    private readonly IdeaDbContext _context;
-
-    public IdeaRepository(IdeaDbContext context)
+    public class IdeaRepository : IIdeaRepository
     {
-        _context = context;
-    }
+        private readonly IdeaDbContext _context;
 
-    public async Task<List<Idea>> GetAllAsync()
-    {
-        return await _context.Ideas.ToListAsync();
-    }
+        public IdeaRepository(IdeaDbContext context)
+        {
+            _context = context;
+        }
 
-    public async Task<Idea?> GetByIdAsync(int id)
-    {
-        return await _context.Ideas.FindAsync(id);
-    }
+        public async Task<List<Idea>> GetAllAsync()
+        {
+            return await _context.Ideas.ToListAsync();
+        }
 
-    public async Task AddAsync(Idea idea)
-    {
-        _context.Ideas.Add(idea);
-        await _context.SaveChangesAsync();
+        public async Task<Idea?> GetByIdAsync(int id)
+        {
+            return await _context.Ideas.FindAsync(id);
+        }
+
+        public async Task AddAsync(Idea idea)
+        {
+            _context.Ideas.Add(idea);
+            await _context.SaveChangesAsync();
+        }
     }
 }

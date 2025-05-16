@@ -16,9 +16,6 @@ public class IdeaService : IIdeaService
         if (string.IsNullOrWhiteSpace(idea.Title))
             throw new ArgumentException("Le titre est obligatoire.");
 
-        idea.VoteCount = 0;
-        idea.Status = IdeaStatus.InProgress;
-
         await _unitOfWork.IdeaRepository.AddAsync(idea);
         await _unitOfWork.SaveChangesAsync();
     }
@@ -36,6 +33,6 @@ public class IdeaService : IIdeaService
             throw new InvalidOperationException("Idée non trouvée.");
 
         idea.VoteCount++;
-        await _unitOfWork.IdeaRepository.AddAsync(idea); // Pour simuler une mise à jour simplifiée
+        await _unitOfWork.SaveChangesAsync();
     }
 }
