@@ -5,16 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IdeaManager.UI.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Orientation="Horizontal" Background="#F0F0F0" Margin="10">
+             d:DesignHeight="50" d:DesignWidth="800">
+    <StackPanel Orientation="Horizontal" Margin="10">
         <Button Content="Liste des idées" 
                 Command="{Binding NavigateToIdeaListCommand}"
                 Margin="0,0,10,0"
-                Padding="15,8"
-                Style="{StaticResource NavigationButtonStyle}"/>
-        <Button Content="Proposer une idée" 
+                Padding="10,5"
+                Background="#007ACC"
+                Foreground="White"/>
+        <Button Content="Nouvelle idée" 
                 Command="{Binding NavigateToIdeaFormCommand}"
-                Padding="15,8"
-                Style="{StaticResource NavigationButtonStyle}"/>
+                Padding="10,5"
+                Background="#007ACC"
+                Foreground="White"/>
     </StackPanel>
 </UserControl> 

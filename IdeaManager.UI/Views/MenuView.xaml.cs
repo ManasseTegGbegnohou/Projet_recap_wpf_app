@@ -12,4 +12,4 @@ namespace IdeaManager.UI.Views
             InitializeComponent();
         }
     }
-} 
+}

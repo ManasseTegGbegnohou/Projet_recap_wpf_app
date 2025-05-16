@@ -28,4 +28,3 @@ public partial class App : Application
         mainWindow.Show();
     }
 }
-

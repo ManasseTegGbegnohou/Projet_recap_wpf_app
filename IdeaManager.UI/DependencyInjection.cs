@@ -8,7 +8,7 @@ namespace IdeaManager.UI
         public static IServiceCollection AddUIServices(this IServiceCollection services)
         {
             // Register ViewModels
-            services.AddTransient<MainViewModel>();
+            services.AddSingleton<MainViewModel>();
             services.AddTransient<IdeaListViewModel>();
             services.AddTransient<IdeaFormViewModel>();
 

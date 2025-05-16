@@ -6,45 +6,42 @@
              xmlns:local="clr-namespace:IdeaManager.UI.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="20">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Proposer une idée" 
-                   FontSize="24" 
+        <TextBlock Grid.Row="0" 
+                   Text="Proposer une nouvelle idée"
+                   FontSize="24"
                    FontWeight="Bold"
-                   Margin="0,0,0,20"/>
+                   Margin="10"/>
 
-        <StackPanel Grid.Row="1" Width="400">
-            <TextBlock Text="Titre :" Margin="0,0,0,5"/>
-            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        <StackPanel Grid.Row="1" Margin="10">
+            <TextBlock Text="Titre" Margin="0,0,0,5"/>
+            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
                      Padding="5"/>
-            <TextBlock Text="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource Self}}"
-                       Foreground="Red"
-                       FontSize="11"
-                       Margin="0,5,0,0"/>
+        </StackPanel>
 
-            <TextBlock Text="Description :" 
-                       Margin="0,20,0,5"/>
+        <StackPanel Grid.Row="2" Margin="10">
+            <TextBlock Text="Description" Margin="0,0,0,5"/>
             <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
-                     AcceptsReturn="True"
-                     TextWrapping="Wrap"
                      Height="100"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
                      Padding="5"/>
+        </StackPanel>
 
-            <Button Content="Soumettre"
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10">
+            <Button Content="Soumettre" 
                     Command="{Binding SubmitCommand}"
-                    Margin="0,20,0,0"
-                    Padding="15,8"
-                    HorizontalAlignment="Left"/>
-
-            <TextBlock Text="{Binding ErrorMessage}"
-                       Foreground="Red"
-                       Margin="0,10,0,0"
-                       TextWrapping="Wrap"
-                       Visibility="{Binding ErrorMessage, Converter={StaticResource StringToVisibilityConverter}}"/>
+                    Padding="10,5"
+                    Background="#007ACC"
+                    Foreground="White"/>
         </StackPanel>
     </Grid>
 </UserControl>

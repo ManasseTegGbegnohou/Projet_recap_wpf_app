@@ -14,38 +14,27 @@ namespace IdeaManager.UI.ViewModels
         [ObservableProperty]
         private ObservableCollection<Idea> ideas;
 
-        [ObservableProperty]
-        private string errorMessage;
-
         public IdeaListViewModel(IIdeaService ideaService)
         {
             _ideaService = ideaService;
             Ideas = new ObservableCollection<Idea>();
-            _ = LoadIdeasAsync();
+            LoadIdeas();
         }
 
-        private async Task LoadIdeasAsync()
+        private async void LoadIdeas()
         {
-            try
+            var ideasList = await _ideaService.GetAllAsync();
+            Ideas.Clear();
+            foreach (var idea in ideasList)
             {
-                var ideasList = await _ideaService.GetAllAsync();
-                Ideas.Clear();
-                foreach (var idea in ideasList)
-                {
-                    Ideas.Add(idea);
-                }
-                ErrorMessage = string.Empty;
-            }
-            catch (System.Exception ex)
-            {
-                ErrorMessage = ex.Message;
+                Ideas.Add(idea);
             }
         }
 
         [RelayCommand]
-        private async Task RefreshAsync()
+        private void Refresh()
         {
-            await LoadIdeasAsync();
+            LoadIdeas();
         }
     }
 }
